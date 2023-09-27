@@ -31,7 +31,7 @@ async def bookmarks_process(message: Message):
     id = message.from_user.id
 
     await message.answer(text=book[1],
-                         reply_markup=create_paginator(id).as_markup(resize_keyboard=True))
+                         reply_markup=create_paginator(id, 1).as_markup(resize_keyboard=True))
 
 
 @router.message(F.text == '/continue')

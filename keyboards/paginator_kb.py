@@ -4,10 +4,10 @@ from lexicon.lexicon import LEXICON
 
 
 def create_paginator(indi: int, bm=None) -> InlineKeyboardBuilder:
-    if bm is not None:
-        users_db[indi]['page'] = bm
-
     number = users_db[indi]['page']
+
+    if bm == 1:
+        number = 1
 
     callback_buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=LEXICON['backward'], callback_data='backward'),
