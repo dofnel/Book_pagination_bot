@@ -1,4 +1,4 @@
-BOOK_PATH = '\\Users\\zateb\\PycharmProjects\\bookBot_pagination\\book\\Bredberi_Marsianskie-hroniki.txt'
+BOOK_PATH = '../bookBot_pagination/book/Bredberi_Marsianskie-hroniki.txt'
 
 
 # Функция, которая правильно обрезает текст до последнего знака препинания
