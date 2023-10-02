@@ -49,7 +49,7 @@ async def backward_callback_button(callback: CallbackQuery):
         users_db[id]['page'] -= 1
 
         await callback.message.edit_text(text=book[users_db[id]['page']],
-                                         reply_markup=create_paginator(id, users_db[id]['page']).as_markup(
+                                         reply_markup=create_paginator(id).as_markup(
                                              resize_keyboard=True))
     else:
         await callback.answer(text='Вы находитесь на первой странице',
@@ -64,7 +64,7 @@ async def forward_callback_button(callback: CallbackQuery):
         users_db[id]['page'] += 1
 
         await callback.message.edit_text(text=book[users_db[id]['page']],
-                                         reply_markup=create_paginator(id, users_db[id]['page']).as_markup(
+                                         reply_markup=create_paginator(id).as_markup(
                                              resize_keyboard=True))
     else:
         await callback.answer(text='Вы на последней странице',
@@ -98,7 +98,7 @@ async def cancel_callback(callback: CallbackQuery):
     page = users_db[id]['page']
 
     await callback.message.edit_text(text=book[page],
-                                     reply_markup=create_paginator(id, page).as_markup())
+                                     reply_markup=create_paginator(id).as_markup())
 
 
 @router.callback_query(F.data == 'cancel_del')
