@@ -1,4 +1,4 @@
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram import F, Router
 from lexicon.lexicon import LEXICON
 from database.database import users_db
@@ -142,6 +142,16 @@ async def delete_from_bookmarks(callback: CallbackQuery):
         await callback.answer(text='Список закладок пуст')
         await callback.message.edit_text(text=book[page],
                                          reply_markup=create_paginator(id).as_markup())
+
+
+@router.message(lambda x: x.text and x.text.isdigit() and 121 > int(x.text) > 0)
+async def number_of_page(message: Message):
+    id = message.from_user.id
+
+    path_to = f'../bookBot_Pagination/book/images_folder/{message.text}.jpg'
+    photo = FSInputFile(path_to)
+
+    await message.answer_photo(photo, reply_markup=create_paginator(id, int(message.text)).as_markup())
 
 
 @router.message()
