@@ -1,6 +1,5 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 from database.database import users_db
-from services.file_handling import book
 from lexicon.lexicon import LEXICON
 
 
@@ -12,7 +11,7 @@ def create_bookmarks_buttons(indi):
 
     # Добавляем все кнопки в один list для добавления через row
     for i in sorted(list(users_db[indi]['bookmarks'])):
-        bm_buttons.append(InlineKeyboardButton(text=f"{i} - {book[i]}",
+        bm_buttons.append(InlineKeyboardButton(text=f"{i} Страница",
                                                callback_data=f"bookmarks_{i}"))
 
     # Добавляем кнопки delete и cancel
@@ -31,9 +30,9 @@ def delete_bookmarks(indi):
     delete_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
     delete_buttons: list[InlineKeyboardButton] = []
 
-    # Заполняем list Инлайн кнопками
+    # Заполняем list Inline кнопками
     for i in sorted(list(users_db[indi]['bookmarks'])):
-        delete_buttons.append(InlineKeyboardButton(text=f"{LEXICON['del']} {i} - {book[i]}",
+        delete_buttons.append(InlineKeyboardButton(text=f"{LEXICON['del']} {i} Страница",
                                                    callback_data=f"del_{i}"))
 
     cancel_button: InlineKeyboardButton = InlineKeyboardButton(text=LEXICON['cancel'], callback_data='cancel_del')

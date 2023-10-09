@@ -1,11 +1,8 @@
-from services.file_handling import book
-
 LEXICON: dict[str, str] = {
     'forward': '>>',
     'backward': '<<',
     '/start': 'Привет, читатель!\n\nЭто бот, в котором '
-              'ты можешь прочитать книгу Рэя Брэдбери "Марсианские '
-              'хроники"\n\nЧтобы посмотреть список доступных '
+              'ты можешь прочитать книгу.\n\nЧтобы посмотреть список доступных '
               'команд - набери /help',
     '/help': 'Это бот-читалка\n\nДоступные команды:\n\n/beginning - '
              'перейти в начало книги\n/continue - продолжить '
@@ -22,8 +19,7 @@ LEXICON: dict[str, str] = {
                     'книги нажмите на кнопку с номером этой '
                     'страницы\n\n/continue - продолжить чтение',
     'cancel_text': '/continue - продолжить чтение',
-    'path': '\\Users\\zateb\\PycharmProjects\\bookBot_pagination\\book\\Bredberi_Marsianskie-hroniki.txt',
-    'book_len': f"{list(book.keys())[-1]}",
+    'book_len': 120,
     'wrong_message': 'Такое сообщение не поддерживается.\n\nВоспользуйтесь /help, чтобы узнать доступные'
                      ' команды и взаимодействия с ботом'}
 
