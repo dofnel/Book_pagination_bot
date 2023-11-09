@@ -18,6 +18,9 @@ async def main():
     # Обновляет menu кнопки
     await setup_menu_buttons(bot)
 
+    # Удаляем сообщения, которые пришли после предыдущего завершения работы бота
+    await bot.delete_webhook(drop_pending_updates=True)
+
     await dp.start_polling(bot)
 
 

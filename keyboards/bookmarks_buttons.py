@@ -1,16 +1,15 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
-from database.database import users_db
 from lexicon.lexicon import LEXICON
 
 
 # Функция, возвращаю builder с клавиатурой для bookmarks
-def create_bookmarks_buttons(indi):
+def create_bookmarks_buttons(indi, bm_list):
     # Создаем builder и пустой list для добавления в него кнопок
     bookmarks_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
     bm_buttons: list[InlineKeyboardButton] = []
 
     # Добавляем все кнопки в один list для добавления через row
-    for i in sorted(list(users_db[indi]['bookmarks'])):
+    for i in sorted(bm_list):
         bm_buttons.append(InlineKeyboardButton(text=f"{i} Страница",
                                                callback_data=f"bookmarks_{i}"))
 
@@ -26,12 +25,12 @@ def create_bookmarks_buttons(indi):
 
 
 # builder с кнопками для удаления из bookmarks при выборе
-def delete_bookmarks(indi):
+def delete_bookmarks(indi, bm_list):
     delete_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
     delete_buttons: list[InlineKeyboardButton] = []
 
     # Заполняем list Inline кнопками
-    for i in sorted(list(users_db[indi]['bookmarks'])):
+    for i in sorted(bm_list):
         delete_buttons.append(InlineKeyboardButton(text=f"{LEXICON['del']} {i} Страница",
                                                    callback_data=f"del_{i}"))
 

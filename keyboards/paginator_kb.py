@@ -1,10 +1,9 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
-from database.database import users_db
 from lexicon.lexicon import LEXICON
 
 
 def create_paginator(indi: int, bm=None) -> InlineKeyboardBuilder:
-    number = users_db[indi]['page']
+    number = bm
 
     if bm is not None:
         number = bm
