@@ -1,0 +1,4 @@
+asyncio==3.4.3
+aiogram==3.0.0b9
+aioredis==2.0.1
+environs==9.5.0
